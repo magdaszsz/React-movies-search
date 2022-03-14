@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.active {
+  color: yellow;
+}
+
+ul {
+ display: flex;
+ list-style-type: none;
+ border: 2px solid green;
+ 
+
+}
+
+li {
+  padding: 1em 2em;
+  
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase;
+}
