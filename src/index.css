@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: steelblue;
 }
 
 code {
@@ -13,7 +14,8 @@ code {
 }
 
 .active {
-  color: yellow;
+  color: lightblue;
+  text-decoration: underline;
 }
 
 ul {
@@ -33,4 +35,47 @@ a {
   text-decoration: none;
   color: black;
   text-transform: uppercase;
+}
+
+/* MOVIE CARDS */
+
+h2 {
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+
+/* LOADER */
+
+.loader-yellow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.yellow {
+  height: 50vh;
+}
+.yellow span {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fbc531;
+  margin: 10px;
+  animation: jump .6s infinite alternate;
+}
+
+span:nth-of-type(2) {
+  animation-delay: .2s;
+  background: #FFC312;
+}
+
+span:nth-of-type(3) {
+  animation-delay: .4s;
+  background: #e1b12c;
+}
+
+@keyframes jump {
+  to {
+    transform: translateY(-20px);
+  }
 }
