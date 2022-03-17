@@ -5,12 +5,18 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: steelblue;
+  //background-color: steelblue;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+main {
+  display: grid;
+  justify-items: center;
+  border: 2px solid magenta;
 }
 
 .active {
@@ -39,9 +45,56 @@ a {
 
 /* MOVIE CARDS */
 
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  //max-width: 80%;
+  border: 2px solid green;
+  text-align: center;
+}
+
 h2 {
   font-size: 1.2rem;
   font-weight: normal;
+}
+
+.movie-card {
+  padding: 1.5rem;
+  box-shadow:
+      0 1px 1px hsl(0deg 0% 0% / 0.075),
+      0 2px 2px hsl(0deg 0% 0% / 0.075),
+      0 4px 4px hsl(0deg 0% 0% / 0.075),
+      0 8px 8px hsl(0deg 0% 0% / 0.075),
+      0 16px 16px hsl(0deg 0% 0% / 0.075)
+    ;
+    transition: all .3s;
+  
+
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+  box-shadow:  0 1px 1px hsl(0deg 0% 0% / 0.075),
+      0 2px 2px hsl(0deg 0% 0% / 0.075),
+      0 4px 4px hsl(0deg 0% 0% / 0.075),
+      0 8px 8px hsl(0deg 0% 0% / 0.075),
+      0 16px 16px hsl(0deg 0% 0% / 0.075), 
+       0 18px 18px hsl(0deg 0% 0% / 0.075)
+     
+    ;
+}
+
+.movie-img {
+  //padding: 1rem;
+  //border: 2px solid pink;
+  //width: 100px;
+}
+
+.movie-img img {
+  width: 200px;
+  height: 300px;
 }
 
 /* LOADER */
@@ -78,4 +131,24 @@ span:nth-of-type(3) {
   to {
     transform: translateY(-20px);
   }
+}
+
+button {
+  background: lightgray;
+  border: none;
+  
+  padding: .3rem 1.2rem;
+  border-radius: 5px;
+  box-shadow: 0 .2rem rgb(158, 151, 151);
+  transition: translate .2s ease-in;
+}
+
+button:hover {
+  transform: translate(0, .1rem);
+  box-shadow: 0 .1rem darkgray;
+  cursor: pointer;
+}
+
+.more-btn {
+
 }

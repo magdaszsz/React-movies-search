@@ -4,13 +4,14 @@ import axios from "axios";
 import Card from "../components/Card";
 import Loader from "../components/Loader";
 import { useState, useEffect } from "react";
+import { BsArrowUp, BsArrowDown } from "react-icons/bs";
 
 function Home() {
   const [moviesData, setMoviesData] = useState([]);
   const [numOfMovies, setNumOfMovies] = useState(10);
   const [search, setSearch] = useState(getDayOfWeek());
   const [spinner, setSpinner] = useState(true);
-  const [goodToBad, setGoodToBad] = useState(null)
+  const [goodToBad, setGoodToBad] = useState(null);
 
   function getDayOfWeek() {
     const date = new Date().getDay();
@@ -41,12 +42,12 @@ function Home() {
     return day;
   }
 
-  function bestToWorst(){
-    setGoodToBad(true)
+  function bestToWorst() {
+    setGoodToBad(true);
   }
 
-  function worstToBest(){
-    setGoodToBad(false)
+  function worstToBest() {
+    setGoodToBad(false);
   }
 
   useEffect(() => {
@@ -58,7 +59,7 @@ function Home() {
       .then((res) => {
         setMoviesData(res.data.results);
         setSpinner(false);
-        setGoodToBad(null)
+        setGoodToBad(null);
       });
   }, [search]);
 
@@ -80,49 +81,54 @@ function Home() {
   return (
     <>
       <Navbar />
-
-      <form>
-        <input
-          type="text"
-          placeholder="Enter a movie title"
-          id="search-input"
-          onChange={(e) => {
-            setSearch(e.target.value);
-            setNumOfMovies(10);
-          }}
-        />
-        {/* <input type="submit" value="Search" /> */}
-      </form>
-      <div className="sorting-btns">
-        <button id="top" onClick={bestToWorst}>Best first</button>
-        <button id="bottom" onClick={worstToBest}>Worst first</button>
-      </div>
-
-      {spinner ? <Loader /> : ""}
-
-      <div>
-        <div className="result">
-          {!moviesData.length && <p>No results found</p>}
-          {moviesData
-          .slice(0, numOfMovies)
-          .sort((a,b) => {
-            if(goodToBad) {
-              return b.vote_average - a.vote_average
-            } else if (goodToBad === false){
-              return a.vote_average - b.vote_average
-            }
-          })
-          .map((movie) => (
-            <Card key={movie.id} movie={movie} />
-          ))}
-          {/* {moviesData.forEach(movie => console.log(movie))} */}
-        </div>
-        {numOfMovies < moviesData.length && (
-          <button onClick={() => setNumOfMovies((prevNum) => prevNum + 6)}>
-            Show More
+      <main>
+        <form>
+          <input
+            type="text"
+            placeholder="Enter a movie title"
+            id="search-input"
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setNumOfMovies(10);
+            }}
+          />
+          {/* <input type="submit" value="Search" /> */}
+        </form>
+        <div className="sorting-btns">
+          <button id="top" onClick={bestToWorst}>
+            <BsArrowUp />
           </button>
-        )}
-      </div>
+          <button id="bottom" onClick={worstToBest}>
+            <BsArrowDown />
+          </button>
+        </div>
+
+        {spinner ? <Loader /> : ""}
+
+        <div>
+          <div className="results">
+            {!moviesData.length && <p>No results found</p>}
+            {moviesData
+              .slice(0, numOfMovies)
+              .sort((a,b) => {
+                if(goodToBad) {
+                  return b.vote_average - a.vote_average
+                } else if (goodToBad === false){
+                  return a.vote_average - b.vote_average
+                }
+              })
+              .map((movie) => (
+                <Card key={movie.id} movie={movie} />
+              ))}
+            {/* {moviesData.forEach(movie => console.log(movie))} */}
+          </div>
+          {numOfMovies < moviesData.length && (
+            <button className="more-btn" onClick={() => setNumOfMovies((prevNum) => prevNum + 6)}>
+              Show More
+            </button>
+          )}
+        </div>
+      </main>
     </>
   );
 }
