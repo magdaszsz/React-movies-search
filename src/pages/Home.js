@@ -6,7 +6,7 @@ import Loader from "../components/Loader";
 import { useState, useEffect } from "react";
 import { BsArrowUp, BsArrowDown } from "react-icons/bs";
 
-function Home() {
+function Home(props) {
   const [moviesData, setMoviesData] = useState([]);
   const [numOfMovies, setNumOfMovies] = useState(10);
   const [search, setSearch] = useState(getDayOfWeek());
@@ -118,9 +118,8 @@ function Home() {
                 }
               })
               .map((movie) => (
-                <Card key={movie.id} movie={movie} />
+                <Card key={movie.id}  movie={movie} fav={props.fav} setFav={props.setFav}/>
               ))}
-            {/* {moviesData.forEach(movie => console.log(movie))} */}
           </div>
           {numOfMovies < moviesData.length && (
             <button className="more-btn" onClick={() => setNumOfMovies((prevNum) => prevNum + 6)}>

@@ -1,28 +1,33 @@
 import React from "react";
 
 function Card(props) {
+  //console.log(props)
 
   function addToFavorites(id) {
-    if(localStorage.getItem('movies') === null) {
-      localStorage.setItem('movies', '[]')
-    }
+    // if (localStorage.getItem("movies") === null) {
+    //   localStorage.setItem("movies", "[]");
+    // }
 
-    const savedMovies = JSON.parse(localStorage.getItem('movies'))
-    if(
-      !savedMovies.includes(id)
-    ) {
+    //const savedMovies = JSON.parse(localStorage.getItem("movies"));
+    const savedMovies = props.fav
+    console.log(savedMovies)
+    if (!savedMovies.includes(id)) {
+      savedMovies.push(id);
 
-      savedMovies.push(id)
-  
-      localStorage.setItem('movies', JSON.stringify(savedMovies))
+      localStorage.setItem("movies", JSON.stringify(savedMovies));
+     
     }
-    // console.log(localStorage.getItem('movies'))
-  
+    
   }
 
-
   return (
-    <div className="movie-card">
+    <div
+      className={
+        props.fav.includes(props.movie.id)
+          ? "favorited movie-card"
+          : "movie-card"
+      }
+    >
       <div className="movie-img">
         <img
           alt="movie poster"
@@ -35,7 +40,20 @@ function Card(props) {
       </div>
       <h2>{props.movie.original_title}</h2>
       <p>{props.movie.vote_average}/10</p>
-      <button onClick={() => addToFavorites(props.movie.id)}>Add</button>
+      <button
+        className="add-btn"
+        onClick={() => {
+          addToFavorites(props.movie.id);
+          console.log(props.fav)
+          props.setFav([...props.fav]);
+          
+        }}
+      >
+        Add
+      </button>
+      <button className="remove-btn" >
+        Remove
+      </button>
     </div>
   );
 }

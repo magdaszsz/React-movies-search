@@ -45,7 +45,7 @@ a {
 
 /* MOVIE CARDS */
 
-.results {
+.results, .favorites-container {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
@@ -149,6 +149,18 @@ button:hover {
   cursor: pointer;
 }
 
-.more-btn {
+.favorited {
+  background: red;
+}
 
+.remove-btn {
+  display: none;
+}
+
+.favorited.movie-card .add-btn {
+  display: none;
+}
+
+.favorited.movie-card .remove-btn {
+  display: block;
 }
