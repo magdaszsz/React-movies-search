@@ -58,6 +58,7 @@ function Home(props) {
       )
       .then((res) => {
         setMoviesData(res.data.results);
+        //console.log(res.data.results)
         setSpinner(false);
         setGoodToBad(null);
       });
@@ -85,7 +86,7 @@ function Home(props) {
         <form>
           <input
             type="text"
-            placeholder="Enter a movie title"
+            placeholder="Search here"
             id="search-input"
             onChange={(e) => {
               setSearch(e.target.value);
@@ -118,15 +119,15 @@ function Home(props) {
                 }
               })
               .map((movie) => (
-                <Card key={movie.id}  movie={movie} fav={props.fav} setFav={props.setFav}/>
+                <Card key={movie.id}  movie={movie} />
               ))}
           </div>
+        </div>
           {numOfMovies < moviesData.length && (
             <button className="more-btn" onClick={() => setNumOfMovies((prevNum) => prevNum + 6)}>
               Show More
             </button>
           )}
-        </div>
       </main>
     </>
   );

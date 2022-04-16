@@ -16,20 +16,43 @@ code {
 main {
   display: grid;
   justify-items: center;
-  border: 2px solid magenta;
+  //border: 2px solid magenta;
+  padding: 2rem;
+}
+
+form {
+  padding: 2rem;
+}
+
+input {
+  border: none;
+  border-bottom: 2px solid rgb(36, 124, 153);
+  transition: all .3s ease-in;
+}
+
+input:focus {
+  outline: none;
+  padding-inline: 3rem;
+  border-bottom: 2px solid rgb(4, 28, 36);
+}
+
+.sorting-btns {
+  margin-bottom: 3rem;
+  width: 8rem;
+  display: flex;
+  justify-content: space-between;
+  //border: 2px solid yellow;
 }
 
 .active {
-  color: lightblue;
+  color: rgb(11, 47, 59);
   text-decoration: underline;
 }
 
 ul {
  display: flex;
  list-style-type: none;
- border: 2px solid green;
- 
-
+ //border: 2px solid green;
 }
 
 li {
@@ -39,8 +62,13 @@ li {
 
 a {
   text-decoration: none;
-  color: black;
+ color: lightblue;
   text-transform: uppercase;
+  transition: all .3s ease-in;
+}
+
+a:hover {
+  color: rgb(11, 47, 59);
 }
 
 /* MOVIE CARDS */
@@ -51,7 +79,7 @@ a {
   gap: 2rem;
   justify-content: center;
   //max-width: 80%;
-  border: 2px solid green;
+  //border: 2px solid green;
   text-align: center;
 }
 
@@ -150,11 +178,16 @@ button:hover {
 }
 
 .favorited {
-  background: red;
+  border: 2px solid red;
 }
 
 .remove-btn {
   display: none;
+}
+
+.favorites-container .favorited {
+  border: none;
+  
 }
 
 .favorited.movie-card .add-btn {
@@ -163,4 +196,9 @@ button:hover {
 
 .favorited.movie-card .remove-btn {
   display: block;
+  margin: 0 auto;
+}
+
+.more-btn {
+  margin: 2rem 0;
 }

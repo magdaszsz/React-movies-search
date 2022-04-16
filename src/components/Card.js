@@ -1,29 +1,53 @@
 import React from "react";
+import { DataContext } from "../contexts/DataContext";
+import { useContext } from "react";
 
 function Card(props) {
-  //console.log(props)
+  const ctx = useContext(DataContext);
 
-  function addToFavorites(id) {
-    // if (localStorage.getItem("movies") === null) {
-    //   localStorage.setItem("movies", "[]");
-    // }
 
-    //const savedMovies = JSON.parse(localStorage.getItem("movies"));
-    const savedMovies = props.fav
-    console.log(savedMovies)
-    if (!savedMovies.includes(id)) {
-      savedMovies.push(id);
+  //function addToFavorites(id) {
+  // if (localStorage.getItem("movies") === null) {
+  //   localStorage.setItem("movies", "[]");
+  // }
 
-      localStorage.setItem("movies", JSON.stringify(savedMovies));
-     
-    }
-    
-  }
+  //const savedMovies = JSON.parse(localStorage.getItem("movies"));
+  //const savedMovies = props.fav;
+  //console.log("savedMovies", savedMovies);
+  //if (!savedMovies.includes(id)) {
+  //savedMovies.push(id);
+
+  //localStorage.setItem("movies", JSON.stringify(savedMovies));
+  //}
+  //}
+
+  // function removeMovie(id) {
+  //const savedMovies = JSON.parse(localStorage.getItem("movies"));
+  //const savedMovies = props.fav;
+  //const filteredMovies = savedMovies.filter((movie) => {
+  // if (movie !== id) {
+  //    return movie;
+  //  }
+  //});
+
+  //props.setFav(filteredMovies);
+  //savedMovies.forEach(el => console.log(typeof(el)))
+
+  // localStorage.setItem('movies', JSON.stringify(filteredMovies))
+
+  // const filteredList = savedMovies(movie => {
+  //   if(movie.id !== id) {
+  //     return movie
+  //   }
+  // })
+
+  //console.log(props.fav);
+  //}
 
   return (
     <div
       className={
-        props.fav.includes(props.movie.id)
+        ctx.favorited.includes(props.movie.id)
           ? "favorited movie-card"
           : "movie-card"
       }
@@ -42,16 +66,14 @@ function Card(props) {
       <p>{props.movie.vote_average}/10</p>
       <button
         className="add-btn"
-        onClick={() => {
-          addToFavorites(props.movie.id);
-          console.log(props.fav)
-          props.setFav([...props.fav]);
-          
-        }}
+        onClick={() => ctx.addToFavorites(props.movie.id)}
       >
         Add
       </button>
-      <button className="remove-btn" >
+      <button
+        className="remove-btn"
+        onClick={() => ctx.removeFromFavorited(props.movie.id)}
+      >
         Remove
       </button>
     </div>
