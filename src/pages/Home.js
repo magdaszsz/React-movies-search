@@ -13,33 +13,47 @@ function Home(props) {
   const [spinner, setSpinner] = useState(true);
   const [goodToBad, setGoodToBad] = useState(null);
 
+  // function getDayOfWeek() {
+  //   const date = new Date().getDay();
+  //   let day = "";
+  //   switch (date) {
+  //     case 0:
+  //       day = "Sunday";
+  //       break;
+  //     case 1:
+  //       day = "Monday";
+  //       break;
+  //     case 2:
+  //       day = "Tuesday";
+  //       break;
+  //     case 3:
+  //       day = "Wednesday";
+  //       break;
+  //     case 4:
+  //       day = "Thursday";
+  //       break;
+  //     case 5:
+  //       day = "Friday";
+  //       break;
+  //     case 6:
+  //       day = "Saturday";
+  //       break;
+  //   }
+  //   return day;
+  // }
+
   function getDayOfWeek() {
-    const date = new Date().getDay();
-    let day = "";
-    switch (date) {
-      case 0:
-        day = "Sunday";
-        break;
-      case 1:
-        day = "Monday";
-        break;
-      case 2:
-        day = "Tuesday";
-        break;
-      case 3:
-        day = "Wednesday";
-        break;
-      case 4:
-        day = "Thursday";
-        break;
-      case 5:
-        day = "Friday";
-        break;
-      case 6:
-        day = "Saturday";
-        break;
-    }
-    return day;
+    const day = new Date().getDay();
+    const daysOfWeek = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    return daysOfWeek[day]
   }
 
   function bestToWorst() {
@@ -61,6 +75,7 @@ function Home(props) {
         //console.log(res.data.results)
         setSpinner(false);
         setGoodToBad(null);
+        //console.log(moviesData)
       });
   }, [search]);
 

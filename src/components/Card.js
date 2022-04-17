@@ -1,48 +1,9 @@
 import React from "react";
-import { DataContext } from "../contexts/DataContext";
+import { FavoriteMoviesContext } from "../contexts/FavoriteMoviesContext";
 import { useContext } from "react";
 
 function Card(props) {
-  const ctx = useContext(DataContext);
-
-
-  //function addToFavorites(id) {
-  // if (localStorage.getItem("movies") === null) {
-  //   localStorage.setItem("movies", "[]");
-  // }
-
-  //const savedMovies = JSON.parse(localStorage.getItem("movies"));
-  //const savedMovies = props.fav;
-  //console.log("savedMovies", savedMovies);
-  //if (!savedMovies.includes(id)) {
-  //savedMovies.push(id);
-
-  //localStorage.setItem("movies", JSON.stringify(savedMovies));
-  //}
-  //}
-
-  // function removeMovie(id) {
-  //const savedMovies = JSON.parse(localStorage.getItem("movies"));
-  //const savedMovies = props.fav;
-  //const filteredMovies = savedMovies.filter((movie) => {
-  // if (movie !== id) {
-  //    return movie;
-  //  }
-  //});
-
-  //props.setFav(filteredMovies);
-  //savedMovies.forEach(el => console.log(typeof(el)))
-
-  // localStorage.setItem('movies', JSON.stringify(filteredMovies))
-
-  // const filteredList = savedMovies(movie => {
-  //   if(movie.id !== id) {
-  //     return movie
-  //   }
-  // })
-
-  //console.log(props.fav);
-  //}
+  const ctx = useContext(FavoriteMoviesContext);
 
   return (
     <div

@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 
-export const DataContext = createContext();
+export const FavoriteMoviesContext = createContext();
 
 function DataContextProvider({ children }) {
   const [favorited, setFavorited] = useState([]);
@@ -28,10 +28,10 @@ function DataContextProvider({ children }) {
 
  
   return (
-    <DataContext.Provider value={{ favorited, addToFavorites, removeFromFavorited}}>
+    <FavoriteMoviesContext.Provider value={{ favorited, addToFavorites, removeFromFavorited}}>
      
       {children}
-    </DataContext.Provider>
+    </FavoriteMoviesContext.Provider>
   );
 }
 
