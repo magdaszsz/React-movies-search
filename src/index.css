@@ -1,15 +1,16 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   //background-color: steelblue;
+  background: hsl(216, 53%, 9%);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -26,14 +27,16 @@ form {
 
 input {
   border: none;
-  border-bottom: 2px solid rgb(36, 124, 153);
-  transition: all .3s ease-in;
+  background: hsl(216, 53%, 9%);
+  border-bottom: 2px solid hsl(160, 50%, 64%);
+  transition: all 0.3s ease-in;
+  color: white;
 }
 
 input:focus {
   outline: none;
   padding-inline: 3rem;
-  border-bottom: 2px solid rgb(4, 28, 36);
+  border-bottom: 2px solid hsl(160, 50%, 64%);
 }
 
 .sorting-btns {
@@ -41,45 +44,44 @@ input:focus {
   width: 8rem;
   display: flex;
   justify-content: space-between;
-  //border: 2px solid yellow;
 }
 
 .active {
-  color: rgb(11, 47, 59);
+  color: hsl(160, 50%, 64%);
   text-decoration: underline;
+  text-decoration-color: rgb(67, 198, 172);
+  text-decoration-thickness: 3px;
 }
 
 ul {
- display: flex;
- list-style-type: none;
- //border: 2px solid green;
+  display: flex;
+  list-style-type: none;
 }
 
 li {
   padding: 1em 2em;
-  
 }
 
 a {
   text-decoration: none;
- color: lightblue;
+  color: hsl(198, 78%, 27%);
+  font-weight: bold;
   text-transform: uppercase;
-  transition: all .3s ease-in;
+  transition: all 0.3s ease-in;
 }
 
 a:hover {
-  color: rgb(11, 47, 59);
+  color: hsl(160, 50%, 64%);
 }
 
 /* MOVIE CARDS */
 
-.results, .favorites-container {
+.results,
+.favorites-container {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
-  //max-width: 80%;
-  //border: 2px solid green;
   text-align: center;
 }
 
@@ -89,35 +91,32 @@ h2 {
 }
 
 .movie-card {
-  padding: 1.5rem;
-  box-shadow:
+  background: hsl(219, 30%, 18%);
+  position: relative;
+  padding: 1.5rem 1.5rem 2.3rem 1.5rem;
+  border-radius: 10px;
+  /* box-shadow:
       0 1px 1px hsl(0deg 0% 0% / 0.075),
       0 2px 2px hsl(0deg 0% 0% / 0.075),
       0 4px 4px hsl(0deg 0% 0% / 0.075),
       0 8px 8px hsl(0deg 0% 0% / 0.075),
       0 16px 16px hsl(0deg 0% 0% / 0.075)
-    ;
-    transition: all .3s;
-  
-
+    ; */
+  transition: all 0.3s;
+  width: 13rem;
+  color: white;
 }
 
 .movie-card:hover {
   transform: translateY(-5px);
-  box-shadow:  0 1px 1px hsl(0deg 0% 0% / 0.075),
+  /* box-shadow:  0 1px 1px hsl(0deg 0% 0% / 0.075),
       0 2px 2px hsl(0deg 0% 0% / 0.075),
       0 4px 4px hsl(0deg 0% 0% / 0.075),
       0 8px 8px hsl(0deg 0% 0% / 0.075),
       0 16px 16px hsl(0deg 0% 0% / 0.075), 
        0 18px 18px hsl(0deg 0% 0% / 0.075)
      
-    ;
-}
-
-.movie-img {
-  //padding: 1rem;
-  //border: 2px solid pink;
-  //width: 100px;
+    ; */
 }
 
 .movie-img img {
@@ -136,22 +135,23 @@ h2 {
 .yellow {
   height: 50vh;
 }
+
 .yellow span {
   width: 20px;
   height: 20px;
   border-radius: 50%;
   background: #fbc531;
   margin: 10px;
-  animation: jump .6s infinite alternate;
+  animation: jump 0.6s infinite alternate;
 }
 
 span:nth-of-type(2) {
-  animation-delay: .2s;
-  background: #FFC312;
+  animation-delay: 0.2s;
+  background: #ffc312;
 }
 
 span:nth-of-type(3) {
-  animation-delay: .4s;
+  animation-delay: 0.4s;
   background: #e1b12c;
 }
 
@@ -164,21 +164,24 @@ span:nth-of-type(3) {
 button {
   background: lightgray;
   border: none;
-  
-  padding: .3rem 1.2rem;
+
+  padding: 0.3rem 1.2rem;
   border-radius: 5px;
-  box-shadow: 0 .2rem rgb(158, 151, 151);
-  transition: translate .2s ease-in;
+  box-shadow: 0 0.2rem rgb(158, 151, 151);
+  transition: translate 0.2s ease-in;
+}
+
+.movie-card button {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 button:hover {
-  transform: translate(0, .1rem);
-  box-shadow: 0 .1rem darkgray;
+  transform: translate(0, 0.1rem);
+  box-shadow: 0 0.1rem darkgray;
   cursor: pointer;
-}
-
-.favorited {
-  border: 2px solid red;
 }
 
 .remove-btn {
@@ -187,7 +190,6 @@ button:hover {
 
 .favorites-container .favorited {
   border: none;
-  
 }
 
 .favorited.movie-card .add-btn {
@@ -202,3 +204,18 @@ button:hover {
 .more-btn {
   margin: 2rem 0;
 }
+
+.heart {
+  font-size: 2rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateY(-50%);
+  color: hsl(176, 68%, 64%);
+}
+
+.no-heart {
+  display: none;
+}
+
+

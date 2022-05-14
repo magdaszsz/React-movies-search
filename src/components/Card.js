@@ -1,6 +1,7 @@
 import React from "react";
 import { FavoriteMoviesContext } from "../contexts/FavoriteMoviesContext";
 import { useContext } from "react";
+import {BsHeartFill} from 'react-icons/bs';
 
 function Card(props) {
   const ctx = useContext(FavoriteMoviesContext);
@@ -13,6 +14,7 @@ function Card(props) {
           : "movie-card"
       }
     >
+      <BsHeartFill className={ctx.favorited.includes(props.movie.id) ? 'heart' : 'no-heart'}/>
       <div className="movie-img">
         <img
           alt="movie poster"
