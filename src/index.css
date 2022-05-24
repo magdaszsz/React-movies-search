@@ -218,4 +218,73 @@ button:hover {
   display: none;
 }
 
+/* THEME STYLES TESTING */
+
+.light {
+  background: white;
+}
+
+.remove-btn.light {
+  background: red;
+}
+
+.movie-card.light {
+  color: black;
+  border: 2px solid gray;
+}
+
+.toggle-container {
+  width: max-content;
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+}
+
+input[type="checkbox"] {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+label {
+  width: 3.3rem;;
+  height: 1.6rem;
+  display:block;
+  background-color: #477a85;
+  border-radius: 100px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.5s;
+  box-shadow: 0 0 20px #477a8550;
+}
+label::after {
+  content: "";
+  width: 1.3rem;
+  height: 1.3rem;
+  background-color: #e8f5f7;
+  position: absolute;
+  border-radius: 70px;
+  top: 2px;
+  left: 3px;
+  transition: 0.5s;
+}
+
+input:checked + label:after {
+  left: calc(100% - 10px);
+  transform: translateX(-100%);
+}
+
+input:checked + label {
+  background-color: #243d42;
+}
+
+label:active:after {
+  width: 1.4rem;
+}
+
+
+
+
+
+
+
 

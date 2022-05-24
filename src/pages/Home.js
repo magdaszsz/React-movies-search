@@ -3,10 +3,18 @@ import Navbar from "../components/Navbar";
 import axios from "axios";
 import Card from "../components/Card";
 import Loader from "../components/Loader";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { BsArrowUp, BsArrowDown } from "react-icons/bs";
+import {ThemeContext} from '../contexts/ThemeContext';
+import ThemeToggler from '../components/ThemeToggler';
+
+
 
 function Home(props) {
+
+  const themeCtx = useContext(ThemeContext); 
+
+
   const [moviesData, setMoviesData] = useState([]);
   const [numOfMovies, setNumOfMovies] = useState(10);
   const [search, setSearch] = useState(getDayOfWeek());
@@ -44,10 +52,9 @@ function Home(props) {
       )
       .then((res) => {
         setMoviesData(res.data.results);
-        //console.log(res.data.results)
         setSpinner(false);
         setGoodToBad(null);
-        //console.log(moviesData)
+    
       });
   }, [search]);
 
@@ -69,7 +76,9 @@ function Home(props) {
   return (
     <>
       <Navbar />
-      <main>
+     <ThemeToggler/>
+      <main className={themeCtx.theme === 'dark' ? 'dark' : 'light'}>
+ 
         <form>
           <input
             type="text"
@@ -116,7 +125,7 @@ function Home(props) {
             </button>
           )}
       </main>
-    </>
+    </ThemeToggler>
   );
 }
 

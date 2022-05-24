@@ -1,16 +1,19 @@
 import React from "react";
 import { FavoriteMoviesContext } from "../contexts/FavoriteMoviesContext";
+import { ThemeContext } from "../contexts/ThemeContext";
 import { useContext } from "react";
 import {BsHeartFill} from 'react-icons/bs';
 
 function Card(props) {
   const ctx = useContext(FavoriteMoviesContext);
+  const themeCtx = useContext(ThemeContext);
+
 
   return (
     <div
       className={
-        ctx.favorited.includes(props.movie.id)
-          ? "favorited movie-card"
+        ctx.favorited.includes(props.movie.id) && themeCtx.theme === 'light'
+          ? "favorited movie-card light"
           : "movie-card"
       }
     >
@@ -34,7 +37,7 @@ function Card(props) {
         Add
       </button>
       <button
-        className="remove-btn"
+        className={themeCtx.theme === 'dark' ? 'remove-btn dark' : 'remove-btn light'}
         onClick={() => ctx.removeFromFavorited(props.movie.id)}
       >
         Remove

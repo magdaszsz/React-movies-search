@@ -4,9 +4,12 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import Card from "../components/Card";
 import { FavoriteMoviesContext } from "../contexts/FavoriteMoviesContext";
+import { ThemeContext } from "../contexts/ThemeContext";
+import ThemeToggler from "../components/ThemeToggler";
 
 function Favorites(props) {
   const ctx = useContext(FavoriteMoviesContext);
+  const themeCtx = useContext(ThemeContext);
   const [favoriteMovies, setFavoriteMovies] = useState([]);
 
 
@@ -34,7 +37,8 @@ function Favorites(props) {
   return (
     <>
       <Navbar />
-      <main>
+      <ThemeToggler />
+      <main className={themeCtx.theme === 'dark' ? 'dark' : 'light'}>
         <div className="favorites-container">
           {favoriteMovies.map((movie) => {
             return <Card key={movie.id} movie={movie} />;

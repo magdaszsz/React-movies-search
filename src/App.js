@@ -2,7 +2,8 @@ import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
 import {Routes, Route} from 'react-router-dom';
 
-import DataContextProvider from "./contexts/FavoriteMoviesContext";
+import FavoriteContextProvider from "./contexts/FavoriteMoviesContext";
+import ThemeContextProvider from "./contexts/ThemeContext";
 
 
 
@@ -10,12 +11,14 @@ import DataContextProvider from "./contexts/FavoriteMoviesContext";
 function App() {
 
   return (
-    <DataContextProvider>
-    <Routes>
-      <Route path="/" element={<Home/>}/>
-      <Route path="/favorites" element={<Favorites />}/>
-    </Routes>
-    </DataContextProvider>
+    <FavoriteContextProvider>
+      <ThemeContextProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/favorites" element={<Favorites />} />
+        </Routes>
+      </ThemeContextProvider>
+    </FavoriteContextProvider>
   );
 }
 

@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from "react";
 
 export const FavoriteMoviesContext = createContext();
 
-function DataContextProvider({ children }) {
+function FavoriteContextProvider({ children }) {
   const [favorited, setFavorited] = useState([]);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function DataContextProvider({ children }) {
   }
 
   function removeFromFavorited(id) {
-    const filtered = favorited.filter(el => el != id)
+    const filtered = favorited.filter(el => el !== id)
     setFavorited(filtered)
     
   }
@@ -35,4 +35,4 @@ function DataContextProvider({ children }) {
   );
 }
 
-export default DataContextProvider;
+export default FavoriteContextProvider;
